@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Components/button.dart';
 import 'package:flutter_app/Components/campo_texto.dart';
 import 'package:flutter_app/Theme/app_padding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,46 +22,28 @@ class _HomeState extends State<Home> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: AppPadding.large),
-                child: TextField(
-                  decoration:
-                      const InputDecoration(labelText: 'Digite o nome:'),
-                  controller: _controller,
-                ),
-              ),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: AppPadding.large),
+                  child: CampoTexto(
+                    controller: _controller,
+                    titulo: 'Digite o nome:',
+                  )),
               Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-                ElevatedButton(
-                  onPressed: _salvarDados,
-                  style: ElevatedButton.styleFrom(
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero, // Borda quadrada
-                    ),
-                  ),
-                  child: const Text('Salvar'),
-                ),
-                ElevatedButton(
-                  onPressed: _recuperarDados,
-                  style: ElevatedButton.styleFrom(
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero, // Borda quadrada
-                    ),
-                  ),
-                  child: const Text('Recuperar'),
-                ),
-                ElevatedButton(
-                  onPressed: _removerDados,
-                  style: ElevatedButton.styleFrom(
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero, // Borda quadrada
-                    ),
-                  ),
-                  child: const Text('Remover'),
-                ),
+                Button(label: 'Salvar', onPressedButton: _salvarDados),
+                Button(label: 'Recuperar', onPressedButton: _recuperarDados),
+                Button(label: 'Remover', onPressedButton: _removerDados),
               ]),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: AppPadding.large),
                 child: Text(_textoSalvo),
-              )
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: AppPadding.large),
+                child: Button(
+                    label: 'Exemplo SQLite',
+                    onPressedButton: () =>
+                        {Navigator.pushNamed(context, '/sqlite')}),
+              ),
             ],
           ),
         ),

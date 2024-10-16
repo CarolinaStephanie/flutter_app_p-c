@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/NavigationBar/bar.dart';
-import 'package:flutter_app/NavigationBar/messages.dart';
-import 'package:flutter_app/NavigationBar/home.dart';
 import 'package:flutter_app/NavigationBar/notifications.dart';
+import 'package:flutter_app/NavigationBar/sqlite.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,7 +37,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/perfil': (context) => const Notifications(), // Página Perfil
+        '/sqlite': (context) => const SqliteExample(), // Página Perfil
         '/cliente': (context) => const Notifications(), // Página Cliente
         '/reclamacoes': (context) =>
             const Notifications(), // Página Reclamacoes
