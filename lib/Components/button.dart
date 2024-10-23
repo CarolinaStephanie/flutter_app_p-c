@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Theme/app_padding.dart';
 
 class Button extends StatefulWidget {
   final VoidCallback onPressedButton;
@@ -13,14 +14,17 @@ class Button extends StatefulWidget {
 class _ButtonState extends State<Button> {
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: widget.onPressedButton,
-      style: ElevatedButton.styleFrom(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero, // Borda quadrada
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: AppPadding.medium),
+      child: ElevatedButton(
+        onPressed: widget.onPressedButton,
+        style: ElevatedButton.styleFrom(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.zero, // Borda quadrada
+          ),
         ),
+        child: Text(widget.label),
       ),
-      child: Text(widget.label),
     );
   }
 }

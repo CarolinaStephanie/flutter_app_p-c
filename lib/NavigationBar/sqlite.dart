@@ -76,6 +76,7 @@ class _SqliteExampleState extends State<SqliteExample> {
 
   @override
   Widget build(BuildContext context) {
+    _recuperarBancoDados();
     return Scaffold(
         appBar: AppBar(
           title: Text('Banco de Dados'),
