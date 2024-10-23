@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/NavigationBar/messages.dart';
 import 'package:flutter_app/NavigationBar/home.dart';
 import 'package:flutter_app/NavigationBar/notifications.dart';
+import 'package:flutter_app/NavigationBar/list.dart';
 import 'package:flutter_app/Theme/app_padding.dart';
 
 class Bar extends StatefulWidget {
@@ -44,6 +45,11 @@ class _BarState extends State<Bar> {
               ),
               label: 'Messages',
             ),
+            NavigationDestination(
+              selectedIcon: Icon(Icons.list),
+              icon: Icon(Icons.list_outlined),
+              label: 'List',
+            ),
           ],
         ),
         body: Padding(
@@ -53,6 +59,7 @@ class _BarState extends State<Bar> {
             const Home(),
             const Notifications(),
             const Messages(),
+            const ListProduct(),
           ][currentPageIndex],
         ));
   }
