@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Components/button.dart';
 import 'package:flutter_app/Components/campo_texto.dart';
+import 'package:flutter_app/Service/cep_service.dart';
 import 'package:flutter_app/Theme/app_padding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -38,17 +39,29 @@ class _HomeState extends State<Home> {
                 child: Text(_textoSalvo),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: AppPadding.large),
+                padding: const EdgeInsets.symmetric(vertical: AppPadding.small),
                 child: Button(
                     label: 'Exemplo SQLite',
                     onPressedButton: () =>
                         {Navigator.pushNamed(context, '/sqlite')}),
               ),
+              Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: AppPadding.small),
+                  child: Button(
+                    label: 'Buscar CEP',
+                    onPressedButton: _buscaCep,
+                  )),
             ],
           ),
         ),
       ),
     );
+  }
+
+  _buscaCep() async {
+    String cep = await CepService.recuperaCep(_controller.text);
+    print(cep);
   }
 
   _salvarDados() async {
